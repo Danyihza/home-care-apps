@@ -1,6 +1,6 @@
 # Home Care Apps
 
-A new Flutter project.
+A medical app using flutter
 
 ## Getting Started
 
