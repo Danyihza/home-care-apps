@@ -3,14 +3,14 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/constants/color_constant.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class LoginScreen2 extends StatefulWidget {
+  const LoginScreen2({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginScreen2State createState() => _LoginScreen2State();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreen2State extends State<LoginScreen2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,25 +25,41 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Container(margin: const EdgeInsets.only(top: 25, bottom: 25)),
             Container(
-                child: Text('Masukkan nomor telepon untuk masuk aplikasi',
-                    textAlign: TextAlign.center,
+                child: Text('Konsultasi tanpa antri',
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 23))),
-            SizedBox(height: 40),
+            Container(
+                child: Text('Gabung Sekarang',
+                    style: TextStyle(fontSize: 17, color: Colors.grey[700]))),
+            SizedBox(height: 20),
+            SignInButton(
+              Buttons.GoogleDark,
+              onPressed: () {},
+            ),
+            SizedBox(height: 20),
+            Container(
+                child: Text('Atau masuk menggunakan e-mail',
+                    style: TextStyle(fontSize: 14))),
+            SizedBox(height: 20),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 50),
               child: Column(
                 children: <Widget>[
                   TextField(
                     obscureText: false,
-                    decoration: new InputDecoration(
-                      border: new OutlineInputBorder(
-                          borderSide: new BorderSide(color: mPrimaryColor)),
-                      labelText: 'E-mail',
-                      hintText: 'Masukkan e-mail anda',
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Email',
                     ),
                   ),
                   SizedBox(height: 20),
+                  TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Password',
+                    ),
+                  ),
                 ],
               ),
             ),
