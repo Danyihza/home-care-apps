@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/constants/color_constant.dart';
 import 'package:frontend/constants/illustrations_constant.dart';
+import 'package:frontend/screens/home_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -215,7 +217,13 @@ class _OtpScreenState extends State<OtpScreen> {
                   color: mPrimaryColor,
                   child: InkWell(
                     splashColor: Colors.teal[900],
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(
+                        CupertinoPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ),
+                      );
+                    },
                     child: Container(
                       alignment: Alignment.center,
                       width: MediaQuery.of(context).size.width,

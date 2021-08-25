@@ -52,8 +52,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextField(
                   controller: numberTextFieldController,
                   maxLength: 14,
-                  onChanged: (text){
-                    
+                  onChanged: (text) {
+                    setState(() {
+                      validateTextField = false;
+                    });
                   },
                   keyboardType: TextInputType.number,
                   obscureText: false,
@@ -102,15 +104,16 @@ class _LoginScreenState extends State<LoginScreen> {
                               validateTextField = true;
                             });
                           } else {
-                          String numberToSend = numberTextFieldController.text;
-                          Navigator.of(context).push(
-                            CupertinoPageRoute(
-                              builder: (context) => OtpScreen(),
-                              settings: RouteSettings(
-                                arguments: numberToSend,
+                            String numberToSend =
+                                numberTextFieldController.text;
+                            Navigator.of(context).push(
+                              CupertinoPageRoute(
+                                builder: (context) => OtpScreen(),
+                                settings: RouteSettings(
+                                  arguments: numberToSend,
+                                ),
                               ),
-                            ),
-                          );
+                            );
                           }
                         },
                         child: Container(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/constants/color_constant.dart';
+import 'package:frontend/screens/home_screen.dart';
 import 'package:frontend/screens/intro/intro_1.dart';
 import 'package:frontend/screens/login_screen.dart';
 import 'package:frontend/screens/otp_screen.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'HomeCare',
         theme: ThemeData(fontFamily: 'Roboto', primaryColor: mPrimaryColor),
-        home: LoginScreen(),
+        home: HomeScreen(),
       ),
     );
   }
