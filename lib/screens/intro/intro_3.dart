@@ -100,33 +100,27 @@ class Intro3 extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    child: Material(
-                                      color: Colors.white, // Button color
-                                      child: InkWell(
-                                        splashColor:
-                                            Colors.grey, // Splash color
-                                        onTap: () {
-                                          Navigator.of(context)
-                                              .pushAndRemoveUntil(
-                                                  CupertinoPageRoute(
-                                                      builder:
-                                                          (context) =>
-                                                              LoginScreen()),
-                                                  (Route<dynamic> route) =>
-                                                      false);
-                                        },
-                                        child: SizedBox(
-                                          width: 61,
-                                          height: 61,
-                                          child: Text(
-                                            'Mulai',
-                                            style:
-                                                TextStyle(color: mPrimaryColor),
-                                          ),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.of(context).pushAndRemoveUntil(
+                                          CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  LoginScreen()),
+                                          (Route<dynamic> route) => false);
+                                    },
+                                    splashColor: Colors.grey,
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: Colors.white,
+                                      ),
+                                      width: 103,
+                                      height: 40,
+                                      child: Text(
+                                        'Mulai',
+                                        style: TextStyle(
+                                          color: mPrimaryColor,
                                         ),
                                       ),
                                     ),
