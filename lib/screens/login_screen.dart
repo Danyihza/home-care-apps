@@ -15,6 +15,14 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController numberTextFieldController = TextEditingController();
+  bool validateTextField = false;
+
+  @override
+  void dispose() {
+    numberTextFieldController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,12 +52,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextField(
                   controller: numberTextFieldController,
                   maxLength: 14,
+                  onChanged: (text){
+                    
+                  },
                   keyboardType: TextInputType.number,
                   obscureText: false,
                   decoration: new InputDecoration(
                     labelStyle: TextStyle(
                       color: mPrimaryColor,
                     ),
+                    errorText: validateTextField
+                        ? 'Mohon isi Nomor WhatsApp anda'
+                        : null,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                       borderSide: BorderSide(
@@ -83,6 +97,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: InkWell(
                         splashColor: Colors.teal[900],
                         onTap: () {
+                          if (numberTextFieldController.text.isEmpty) {
+                            setState(() {
+                              validateTextField = true;
+                            });
+                          } else {
                           String numberToSend = numberTextFieldController.text;
                           Navigator.of(context).push(
                             CupertinoPageRoute(
@@ -92,6 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           );
+                          }
                         },
                         child: Container(
                           alignment: Alignment.center,
