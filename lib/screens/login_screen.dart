@@ -1,4 +1,6 @@
 import 'package:backdrop_modal_route/backdrop_modal_route.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,6 +18,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController numberTextFieldController = TextEditingController();
   bool validateTextField = false;
+
+  FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -98,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: mPrimaryColor,
                       child: InkWell(
                         splashColor: Colors.teal[900],
-                        onTap: () {
+                        onTap: () async {
                           if (numberTextFieldController.text.isEmpty) {
                             setState(() {
                               validateTextField = true;
@@ -106,6 +110,23 @@ class _LoginScreenState extends State<LoginScreen> {
                           } else {
                             String numberToSend =
                                 numberTextFieldController.text;
+
+                            // await _auth.verifyPhoneNumber(
+                            //   phoneNumber: '+6282331147549',
+                            //   verificationCompleted:
+                            //       (phoneAuthCredential) async {
+                            //     print('complete');
+                            //   },
+                            //   verificationFailed: (verification) async {
+                            //     print('failed');
+                            //   },
+                            //   codeSent: (verficationId, resendingToken) async {
+                            //     print('code sent');
+                            //   },
+                            //   codeAutoRetrievalTimeout: (verificationId) async {
+                            //     print('timeout');
+                            //   },
+                            // );
                             Navigator.of(context).push(
                               CupertinoPageRoute(
                                 builder: (context) => OtpScreen(),

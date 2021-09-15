@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/constants/color_constant.dart';
 import 'package:frontend/screens/home_screen.dart';
@@ -5,7 +6,11 @@ import 'package:frontend/screens/intro/intro_1.dart';
 import 'package:frontend/screens/login_screen.dart';
 import 'package:frontend/screens/otp_screen.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -16,7 +21,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'HomeCare',
         theme: ThemeData(fontFamily: 'Roboto', primaryColor: mPrimaryColor),
-        home: HomeScreen(),
+        home: Intro1(),
       ),
     );
   }
